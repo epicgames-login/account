@@ -2,3 +2,6 @@
     "name": "app/php-site",
     "description": "PHP site"
 }
+{
+    "require": {}
+}
